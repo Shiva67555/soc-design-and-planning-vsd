@@ -91,11 +91,11 @@ Hands-on exercises performed during the lab session included:
 
 SYNTHESIS SUCCESSFUL Screenshot
 
-# Day 2: Floorplanning Concepts and Standard Cell Placement Overview Day 2 of the workshop focused on chip floorplanning fundamentals, understanding good versus bad floorplans, and learning the basics of library cells and placement. The session combined conceptual learning with hands-on implementation using the OpenLANE ASIC flow and layout visualization through MAGIC.
+# Day 2 of the workshop explored the fundamentals of chip floorplanning, highlighting the characteristics of effective and ineffective floorplans. The session also introduced standard cell libraries and the basics of placement, combining theoretical concepts with practical experience using the OpenLANE ASIC flow and layout visualization in MAGIC.
 
 Good Floorplan vs Bad Floorplan Floorplanning is a critical step in ASIC design as it directly impacts area utilization, routing quality, power distribution, and timing closure. A good floorplan enables smooth routing and scalability, while a bad floorplan can cause congestion, timing violations, and design inefficiencies.
 
-Characteristics of a good floorplan:
+# Characteristics of a good floorplan:
 
 Balanced utilization Adequate whitespace for routing Proper aspect ratio Efficient I/O and power structure placement Chip Floorplanning Fundamentals Core The core is the central region of the chip where all logic elements such as standard cells, macros, and IP blocks are placed. This area contains the functional logic of the design.
 
@@ -131,7 +131,7 @@ Interpretation Aspect ratio equal to 1 represents a square core. Aspect ratio no
 
 ![image alt](https://github.com/Shiva67555/soc-design-and-planning-nasscom-vsd/blob/main/Screenshot%20from%202025-12-10%2015-19-59.png?raw=true)
 
-# Day 3: Inverter Characterization, Library Cells, and Routing Basics Overview Day 3 of the workshop focused on standard cell design and characterization using Sky130 model files. The session covered CMOS inverter simulation using ngspice, extraction of static and dynamic parameters, creation of layout views using MAGIC, and an introduction to LEF files, routing tracks, and DRC debugging.
+# Day 3 of the workshop concentrated on standard cell design and characterization using Sky130 model files. Participants simulated CMOS inverters with ngspice, analyzed key static and dynamic parameters, created layout views in MAGIC, and gained an introduction to LEF files, routing tracks, and DRC error analysis.
 
 CMOS Inverter Simulation Using ngspice A CMOS inverter was simulated using Sky130 device models to understand both static and dynamic behavior. DC and transient analyses were performed using ngspice.
 
@@ -157,7 +157,7 @@ Standard Cell Design Using MAGIC Inverter Layout Creation The CMOS inverter layo
 
 Parasitic Extraction Extraction Process Once the layout was completed, parasitic extraction was performed to capture resistive and capacitive effects.
 
-Day 3 Labs: Inverter Characterization Screenshot 16-02-46
+# Day 3 Labs: Inverter Characterization Screenshots
 
 ![image alt](https://github.com/Shiva67555/soc-design-and-planning-nasscom-vsd/blob/main/Screenshot%20from%202025-12-10%2018-48-29.png?raw=true)
 
@@ -203,7 +203,7 @@ Day 3 Labs: Inverter Characterization Screenshot 16-02-46
 
 ![image alt](https://github.com/Shiva67555/soc-design-and-planning-nasscom-vsd/blob/main/Screenshot%20from%202025-12-11%2020-09-16.png?raw=true)
 
-Day 4: Timing-Aware Physical Design and Custom Cell Integration Session Summary The fourth day of the workshop concentrated on understanding timing behavior before routing, aligning standard cell layouts with routing tracks, and integrating a custom-designed inverter into the OpenLANE flow. The lab sessions emphasized timing optimization, LEF generation, synthesis tuning, and post-synthesis timing verification.
+# Day 4 focused on timing-aware physical design, with an emphasis on analyzing timing behavior prior to routing and aligning standard cell layouts with routing tracks. The session also covered integrating a custom inverter into the OpenLANE flow, supported by hands-on labs involving timing optimization, LEF generation, synthesis tuning, and post-synthesis timing verification.
 
 Pre-Routing Timing Perspective Before detailed routing begins, it is critical to evaluate timing to prevent late-stage violations. Pre-layout timing analysis allows designers to identify long paths, improper buffering, and clock-related issues early in the flow.
 
@@ -217,7 +217,7 @@ Cell Layout Constraints Pins should lie on valid routing intersections Cell widt
 
 Track pitch values Layer-specific routing directions Spacing constraints This information guides both cell layout and routing feasibility.
 
-Day 4 Lab Work: Custom Inverter Preparation Loading the Inverter Layout The inverter layout was opened in MAGIC for inspection and modification.
+# Day 4 Lab Work: Custom Inverter Preparation Loading the Inverter Layout The inverter layout was opened in MAGIC for inspection and modification.
 
 ![image alt](https://github.com/Shiva67555/soc-design-and-planning-nasscom-vsd/blob/main/Screenshot%20from%202025-12-14%2013-03-25.png?raw=true)
 
