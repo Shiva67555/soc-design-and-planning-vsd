@@ -5,11 +5,11 @@ A two-week hands-on workshop on Digital VLSI SoC Design and Planning, covering t
 
 The RTL to GDSII flow represents the complete journey of a digital design, starting from a high-level behavioral description and ending with a manufacturable physical layout. This flow includes major stages such as RTL synthesis, floorplanning, placement, clock tree synthesis, routing, and multiple verification steps. The primary goal is to ensure that the final layout faithfully implements the intended logic, meets timing constraints, and complies with foundry design rules.
 
-Design Abstraction in VLSI and the Y-Chart Model:-
+# Design Abstraction in VLSI and the Y-Chart Model:-
 
 A key theoretical concept introduced was design abstraction in VLSI systems. The Y-Chart model explains how a design evolves across three domains: a.Behavioral domain – functional description of the system b.Structural domain – organization of components and interconnections c.Geometric domain – physical representation of the design
 
-Chip Structure and Major Components:-
+# Chip Structure and Major Components:-
 
 The internal structure of an integrated circuit was discussed in detail, covering the following elements: 1.Core The region containing standard cells, IP blocks, combinational and sequential logic, and internal routing. 2.Die The physical silicon area that houses the core along with peripheral structures. Multiple dies are fabricated on a single wafer. 3.I/O Pads Interfaces that connect internal signals to the external package, including input, output, bidirectional, and power pads. 4.IP Blocks Pre-designed modules such as SRAMs, PLLs, ADCs, and DACs, typically provided by foundries due to their design complexity. 5.Process Design Kit (PDK) The PDK serves as the link between EDA tools and fabrication technology. It contains device models, design rule files, layout layers, and standard cell libraries. The workshop used the SkyWater 130 nm PDK (sky130_fd_sc_hd).
 
