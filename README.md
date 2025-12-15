@@ -95,7 +95,9 @@ SYNTHESIS SUCCESSFUL Screenshot
 
 Highlighting the characteristics of effective and ineffective floorplans. The session also introduced standard cell libraries and the basics of placement, combining theoretical concepts with practical experience using the OpenLANE ASIC flow and layout visualization in MAGIC.
 
-Good Floorplan vs Bad Floorplan Floorplanning is a critical step in ASIC design as it directly impacts area utilization, routing quality, power distribution, and timing closure. A good floorplan enables smooth routing and scalability, while a bad floorplan can cause congestion, timing violations, and design inefficiencies.
+# Good Floorplan vs Bad Floorplan 
+
+Floorplanning is a critical step in ASIC design as it directly impacts area utilization, routing quality, power distribution, and timing closure. A good floorplan enables smooth routing and scalability, while a bad floorplan can cause congestion, timing violations, and design inefficiencies.
 
 # Characteristics of a good floorplan:
 
