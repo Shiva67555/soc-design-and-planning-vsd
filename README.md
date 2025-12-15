@@ -107,7 +107,9 @@ Die The die surrounds the core and includes I/O pads, power pads, and boundary r
 
 The core dimensions depend on the design netlist, while the die dimensions are derived from the core with additional margins.
 
-# Utilization Factor The utilization factor represents how much of the core area is occupied by logic. Utilization Factor = (Area occupied by netlist) / (Total core area)
+# Utilization Factor 
+
+The utilization factor represents how much of the core area is occupied by logic. Utilization Factor = (Area occupied by netlist) / (Total core area)
 
 Observations A utilization factor of 1 indicates a poor floorplan. No space is left for routing or future design changes. Practical designs maintain utilization less than 1. Aspect Ratio The aspect ratio defines the shape of the core. Aspect Ratio = (Height of core) / (Width of core)
 
@@ -120,7 +122,7 @@ A suitable aspect ratio helps reduce congestion and improves placement efficienc
 
 # Floorplanning Examples 
 
-#Case 1: Fully Utilized Core 
+# Case 1: Fully Utilized Core 
 
 1.Core area equals netlist area 
 
@@ -130,7 +132,7 @@ A suitable aspect ratio helps reduce congestion and improves placement efficienc
 
 4.Considered a poor floorplan due to lack of routing space 
 
-#Case 2: Optimized Core Area 
+# Case 2: Optimized Core Area 
 
 1.Core area larger than netlist area 
 
@@ -140,7 +142,7 @@ A suitable aspect ratio helps reduce congestion and improves placement efficienc
 
 4.Allows better routing and future expansion 
 
-#Day 2 Labs: Floorplanning Using OpenLANE Running the Floorplan The floorplanning stage was executed using the OpenLANE command:
+# Day 2 Labs: Floorplanning Using OpenLANE Running the Floorplan The floorplanning stage was executed using the OpenLANE command:
 
 ![image alt](https://github.com/Shiva67555/soc-design-and-planning-nasscom-vsd/blob/main/Screenshot%20from%202025-12-15%2012-56-48.png?raw=true)
 
@@ -168,46 +170,47 @@ A suitable aspect ratio helps reduce congestion and improves placement efficienc
 
 Simulated CMOS inverters with ngspice, analyzed key static and dynamic parameters, created layout views in MAGIC, and gained an introduction to LEF files, routing tracks, and DRC error analysis.
 
-#CMOS Inverter Simulation Using ngspice 
+# CMOS Inverter Simulation Using ngspice 
 
 A CMOS inverter was simulated using Sky130 device models to understand both static and dynamic behavior. DC and transient analyses were performed using ngspice.
 
 #Static Characteristics of CMOS Inverter 
 
-#Switching Threshold 
+# Switching Threshold 
 The input voltage at which the inverter output switches from logic high to logic low.
 
-#Input Low Voltage 
+# Input Low Voltage 
 The maximum input voltage interpreted as logic 0.
 
-#Input High Voltage 
+# Input High Voltage 
 The minimum input voltage interpreted as logic 1.
 
 #Output Low Voltage 
 The output voltage level corresponding to logic 0.
 
-#Output High Voltage 
+# Output High Voltage 
 The output voltage level corresponding to logic 1.
 
-#Noise Margins 
+# Noise Margins 
 Noise margins represent the tolerance of the inverter to noise and are defined for both logic high and logic low regions.
 
-#Dynamic Characteristics of CMOS Inverter 
-#Propagation Delay 
+# Dynamic Characteristics of CMOS Inverter 
+
+# Propagation Delay 
 The delay between a change in input and the corresponding change in output.
 
-#Rise Time 
+# Rise Time 
 The time taken by the output to transition from low to high.
 
-#Fall Time
+# Fall Time
 The time taken by the output to transition from high to low.
 
-#Standard Cell Design Using MAGIC 
+# Standard Cell Design Using MAGIC 
 
-#Inverter Layout Creation 
+# Inverter Layout Creation 
 The CMOS inverter layout was created using the MAGIC layout editor following Sky130 design rules. Proper placement of transistors, diffusion, poly, and metal layers was ensured based on the schematic.
 
-#Parasitic Extraction 
+# Parasitic Extraction 
 Extraction Process Once the layout was completed, parasitic extraction was performed to capture resistive and capacitive effects.
 
 # Day 3 Labs: Inverter Characterization Screenshots
@@ -260,7 +263,7 @@ Extraction Process Once the layout was completed, parasitic extraction was perfo
 
 The session also covered integrating a custom inverter into the OpenLANE flow, supported by hands-on labs involving timing optimization, LEF generation, synthesis tuning, and post-synthesis timing verification.
 
-#Pre-Routing Timing Perspective 
+# Pre-Routing Timing Perspective 
 Before detailed routing begins, it is critical to evaluate timing to prevent late-stage violations. Pre-layout timing analysis allows designers to identify long paths, improper buffering, and clock-related issues early in the flow.
 
 A well-structured clock distribution is necessary to:
@@ -271,12 +274,13 @@ A well-structured clock distribution is necessary to:
 
 3.Improve overall design reliability 
 
-#Delay-Based Timing Representation 
+# Delay-Based Timing Representation 
 
-#Concept of Delay Tables 
+# Concept of Delay Tables 
 Delay tables capture how much time signals take to propagate through logic cells and interconnects under different conditions. These values form the basis for estimating path delays during synthesis and placement.
 
-#Application in Design Flow 
+# Application in Design Flow 
+
 1.Used by synthesis tools to calculate arrival and required times 
 
 2.Helps tools choose optimal cell sizes and buffering 
@@ -285,11 +289,11 @@ Delay tables capture how much time signals take to propagate through logic cells
 
 # From Layout Grids to Routing Tracks 
 
-#Why Track Alignment Matters 
+# Why Track Alignment Matters 
 
 Physical layouts are drawn on grids, while routing follows predefined tracks provided by the technology. Converting grid-based layouts to track-aligned designs ensures compatibility with automated routing.
 
-#Cell Layout Constraints 
+# Cell Layout Constraints 
 
 1.Pins should lie on valid routing intersections 
 
@@ -297,7 +301,7 @@ Physical layouts are drawn on grids, while routing follows predefined tracks pro
 
 3.Cell height must match vertical track spacing 
 
-#Track Configuration Details 
+# Track Configuration Details 
 
 Track definitions are provided through the tracks.info file, which includes:
 
