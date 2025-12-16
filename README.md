@@ -11,7 +11,18 @@ A key theoretical concept introduced was design abstraction in VLSI systems. The
 
 # Chip Structure and Major Components:-
 
-The internal structure of an integrated circuit was discussed in detail, covering the following elements: 1.Core The region containing standard cells, IP blocks, combinational and sequential logic, and internal routing. 2.Die The physical silicon area that houses the core along with peripheral structures. Multiple dies are fabricated on a single wafer. 3.I/O Pads Interfaces that connect internal signals to the external package, including input, output, bidirectional, and power pads. 4.IP Blocks Pre-designed modules such as SRAMs, PLLs, ADCs, and DACs, typically provided by foundries due to their design complexity. 5.Process Design Kit (PDK) The PDK serves as the link between EDA tools and fabrication technology. It contains device models, design rule files, layout layers, and standard cell libraries. The workshop used the SkyWater 130 nm PDK (sky130_fd_sc_hd).
+The internal structure of an integrated circuit was discussed in detail, covering the following elements: 
+
+1.Core The region containing standard cells, IP blocks, combinational and sequential logic, and internal routing. 
+
+2.Die The physical silicon area that houses the core along with peripheral structures. Multiple dies are fabricated on a single wafer. 
+
+3.I/O Pads Interfaces that connect internal signals to the external package, including input, output, bidirectional, and power pads. 
+
+4.IP Blocks Pre-designed modules such as SRAMs, PLLs, ADCs, and DACs, typically provided by foundries due to their design complexity. 
+
+5.Process Design Kit (PDK) The PDK serves as the link between EDA tools and fabrication technology. 
+It contains device models, design rule files, layout layers, and standard cell libraries. The workshop used the SkyWater 130 nm PDK (sky130_fd_sc_hd).
 
 # Introduction to RISC-V Architecture:-
 
@@ -19,7 +30,7 @@ RISC-V is an open and extensible Instruction Set Architecture (ISA). The ISA def
 
 The software toolchain plays a critical role in execution, where high-level programming languages are translated into machine instructions through compilers, assemblers, and the operating system.
 
-Software-to-Hardware Execution Flow:-
+# Software-to-Hardware Execution Flow:-
 
 An overview of how software interacts with hardware was presented: 1.Application Layer – user-level programs 2.Operating System – manages system resources and hardware interaction 3.Compiler – converts high-level code into machine instructions 4.Assembler – encodes instructions into binary format
 
@@ -27,11 +38,18 @@ This flow establishes a direct link between application software and the process
 
 # Open-Source ASIC Design Ecosystem:-
 
-The workshop highlighted the essential components required for a complete ASIC design environment: 1.RTL design files 2.EDA tools such as Yosys, OpenROAD, Magic, Netgen, and KLayout 3.PDK data OpenLane integrates these tools into a unified, automated flow, enabling end-to-end digital ASIC design using open-source resources.
+The workshop highlighted the essential components required for a complete ASIC design environment: 
+
+1.RTL design files 
+
+2.EDA tools such as Yosys, OpenROAD, Magic, Netgen, and KLayout 
+
+3.PDK data OpenLane integrates these tools into a unified, automated flow, enabling end-to-end digital ASIC design using open-source resources.
 
 # Simplified RTL to GDSII Design Stages:-
 
 The digital implementation flow was broken down into the following steps: 
+
 1.Synthesis Conversion of RTL code into a gate-level netlist using standard cells provided in multiple formats (Verilog, Liberty, LEF, SPICE, and GDS).
 
 2.Floorplanning and Power Planning Definition of core dimensions, pin locations, macro placement, and power distribution networks including rings, straps, and rails.
@@ -47,6 +65,7 @@ The digital implementation flow was broken down into the following steps:
 # Detailed OpenLane Flow:-
 
 The complete OpenLane automation flow consists of: 
+
 1.RTL synthesis using Yosys and ABC 
 
 2.Static timing analysis 
