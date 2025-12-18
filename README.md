@@ -677,4 +677,8 @@ Before initiating routing, key routing-related variables were inspected to confi
 
 ![image alt](https://github.com/Gobika404/NASSCOM-VSD-SoC--design-and--Planning-Program/raw/main/Screenshot%20from%202025-12-14%2022-34-31.png)
 
+![image alt]()
+
+![image alt]()
+
 THANK YOU
