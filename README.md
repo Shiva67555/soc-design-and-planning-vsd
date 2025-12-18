@@ -7,9 +7,9 @@ The RTL to GDSII flow represents the complete journey of a digital design, start
 
 # How to talk to computers
 
-![image alt]()
-
 Talking to a computer means giving some set of instructions in a form that hardware understands and whose hardware is based on RISC-V core. If you want to run a software/ Programming code like C,C++ or java it can be easily understandable by humans, but the hardware cannot understand it. So the compiler converts high level code to RISC-V instructions which processor can decode.
+
+![image alt](https://github.com/Shiva67555/soc-design-and-planning-nasscom-vsd/blob/main/Screenshot%202025-12-18%20125429.png?raw=true)
 
 # SoC Design and Openlane
 
@@ -622,3 +622,5 @@ Improper configuration of these variables may cause PDN generation to fail.
 Before initiating routing, key routing-related variables were inspected to confirm the current design state.
 
 ![image alt](https://github.com/Gobika404/NASSCOM-VSD-SoC--design-and--Planning-Program/raw/main/Screenshot%20from%202025-12-14%2022-34-31.png)
+
+THANK YOU
