@@ -41,7 +41,7 @@ b.Detailed Routing
 
 The openLane ASIC flow is as follows:
 
-![image alt]()
+![image alt](https://github.com/Shiva67555/soc-design-and-planning-nasscom-vsd/blob/main/Screenshot%202025-12-18%20124726.png?raw=true)
 
 # Get familiar to Open-source EDA
 
