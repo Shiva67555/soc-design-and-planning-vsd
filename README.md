@@ -197,6 +197,27 @@ A suitable aspect ratio helps reduce congestion and improves placement efficienc
 
 Simulated CMOS inverters with ngspice, analyzed key static and dynamic parameters, created layout views in MAGIC, and gained an introduction to LEF files, routing tracks, and DRC error analysis.
 
+# CMOS inverter Switching threshold (Vm)
+It can be defined as the point on transfer characteristics plot where Vin equals vout. At this point bot PMOS and NMOS will be in ON state leading to rise in leakage current
+
+# CMOS fabrication process
+
+1. Substrate selection Selecting the substrate material.
+
+2. Well Formation Create N-well and P-well regions where PMOS and NMOS transistors will be placed.
+
+3. Isolation Form isolation regions (oxide trenches) to separate transistors on the wafer.
+
+4. Gate Formation Grow a thin gate oxide and deposit/pattern polysilicon to create the transistor gate.
+
+5. Source/Drain Formation Dope the regions on both sides of the gate to form source and drain terminals.
+
+6. Contact Creation Open small holes (contacts) in the insulating layer so metal can touch the transistor terminals.
+
+7. Metallization Deposit and pattern metal layers to connect different devices and form interconnects.
+
+8. Passivation Add a protective top layer and open windows for bonding pads used in packaging.
+
 # CMOS Inverter Simulation Using ngspice 
 
 A CMOS inverter was simulated using Sky130 device models to understand both static and dynamic behavior. DC and transient analyses were performed using ngspice.
@@ -242,11 +263,26 @@ Extraction Process Once the layout was completed, parasitic extraction was perfo
 
 # Day 3 Labs: Inverter Characterization Screenshots
 
+# Lab steps to git clone vsdstd cell design
+To clone the standard cell, copy the file path from github repository and paste it in the openlane directory after initiating the command git clone. The file path to clone the std cell is as follows
+                   
+                   git clone https://github.com/nickson-jose/vsdstdcelldesign
+
+This creates vsdstd cell design in openlane directory
+
 ![image alt](https://github.com/Shiva67555/soc-design-and-planning-nasscom-vsd/blob/main/Screenshot%20from%202025-12-10%2018-48-29.png?raw=true)
+
+if we go into the vsdstd cell directory, you can see .mag file, libs file and so on. Now let’s view .mag file see what layers are used to build the inverter. So, to view the file we need technology file. So, we will copy the file from given address. Now the file is copied to vsdstd cell design folder
 
 ![image alt](https://github.com/Shiva67555/soc-design-and-planning-nasscom-vsd/blob/main/Screenshot%20from%202025-12-10%2018-49-09.png?raw=true)
 
+If we want to know the information about the layers, click on the area and press and type what in tckon window, similarly we can check for output terminal also, but double pressing “S”
+
 ![image alt](https://github.com/Shiva67555/soc-design-and-planning-nasscom-vsd/blob/main/Screenshot%20from%202025-12-11%2010-52-12.png?raw=true)
+
+Lab steps to create std cell layout and extract spice netlist
+
+To extract spice netlist, input command extract all to tckon window. It extracts the spice netlist
 
 ![image alt](https://github.com/Shiva67555/soc-design-and-planning-nasscom-vsd/blob/main/Screenshot%20from%202025-12-11%2010-54-22.png?raw=true)
 
@@ -254,13 +290,43 @@ Extraction Process Once the layout was completed, parasitic extraction was perfo
 
 ![image alt](https://github.com/Shiva67555/soc-design-and-planning-nasscom-vsd/blob/main/Screenshot%20from%202025-12-11%2011-07-35.png?raw=true)
 
+lets go to the vsdstd cell directory and check whether the spice netlist is extracted or not.
+
+we will use this .ext file to extract the spice file to use with ngspice tool to verify the transfer characteristics. For extract the ngspice input the commands ext2spice cthresh 0 r thresh 0 followed by ext2spice
+
 ![image alt](https://github.com/Shiva67555/soc-design-and-planning-nasscom-vsd/blob/main/Screenshot%20from%202025-12-11%2011-08-17.png?raw=true)
+
+In the generated spicefile, we can see all the details about the NMOS and PMOS connectivity and information about the power also.
+
+Now, we need to modify the ngspice file to simulate and view the results. So we include this file in terminal by .include.libs/pshort.lib and.include.libs/shsort.lib command
+
+Set power supply VDD to 3.3V by assigning VDD VPWR 0 3.3V, and also add command to do transient analysis over certain time like. tran 1n 20n.
 
 ![image alt](https://github.com/Shiva67555/soc-design-and-planning-nasscom-vsd/blob/main/Screenshot%20from%202025-12-11%2011-34-26.png?raw=true)
 
+Now plotting the graph here by command, plot y vs time a
+
 ![image alt](https://github.com/Shiva67555/soc-design-and-planning-nasscom-vsd/blob/main/Screenshot%20from%202025-12-11%2011-46-37.png?raw=true)
 
+Now if we increase the C3 value from 0.00174ff to 2ff, the graph will look like this, it observed that the graph becomes smoother.
+
 ![image alt](https://github.com/Shiva67555/soc-design-and-planning-nasscom-vsd/blob/main/Screenshot%20from%202025-12-11%2011-46-41.png?raw=true)
+
+Lab steps to characterize inverter using sky130 model files
+
+Here we calculate the values of parameters
+
+1.Rise time
+
+Rise time is defined as the time taken to reach 20% value to 80% value.
+
+So, the rise time = (5.72289-6.15663) e-09= 77.54psec
+
+2.Fall time
+
+It is time taken by output for transition from 80% to 20%
+
+So, the fall time= (4.08434-2.09639) e-09= 19.9psec
 
 ![image alt](https://github.com/Shiva67555/soc-design-and-planning-nasscom-vsd/blob/main/Screenshot%20from%202025-12-11%2011-46-56.png?raw=true)
 
@@ -270,11 +336,24 @@ Extraction Process Once the layout was completed, parasitic extraction was perfo
 
 ![image alt](https://github.com/Shiva67555/soc-design-and-planning-nasscom-vsd/blob/main/Screenshot%20from%202025-12-11%2012-28-07.png?raw=true)
 
+  Use the command magic -d XR
+
+To open the magic tool. Open met3.mag file from the file menu. We can see different layouts with different DRC values.
+
 ![image alt](https://github.com/Shiva67555/soc-design-and-planning-nasscom-vsd/blob/main/Screenshot%20from%202025-12-11%2012-48-31.png?raw=true)
 
+# Lab introduction to magic tool options and DRC rules
+The technology file is set if rues that declares layers, types and electrical connectivity, DRC, device extraction rules, and rules to read lef and def files. It can be sourced from opencircuitdesign.com using the below path ‘
+                                        
+                           wget http://opencircuitdesign.com/open_pdks/archive/drc_tests.tgz
+                                                 
+                            tar xfz drc_tests.tgz
+                            
 ![image alt](https://github.com/Shiva67555/soc-design-and-planning-nasscom-vsd/blob/main/Screenshot%20from%202025-12-11%2012-58-43.png?raw=true)
 
 ![image alt](https://github.com/Shiva67555/soc-design-and-planning-nasscom-vsd/blob/main/Screenshot%20from%202025-12-11%2012-59-20.png?raw=true)
+
+To check for vias in the metal3 layer, make a rectangluar selection in an empty space and paint it with the m3contact color from the color palette by clicking middle mouse button. The vias can be viewed by: cif see VIA2
 
 ![image alt](https://github.com/Shiva67555/soc-design-and-planning-nasscom-vsd/blob/main/Screenshot%20from%202025-12-11%2012-59-57.png?raw=true)
 
@@ -352,15 +431,44 @@ This information guides both cell layout and routing feasibility.
 
 ![image alt](https://github.com/Shiva67555/soc-design-and-planning-nasscom-vsd/blob/main/Screenshot%20from%202025-12-14%2013-18-58.png?raw=true)
 
+# Standard cell lef generation
+
+To generate .lef file, first invoke magic tool to view the vsdstd cell design. Now type lef write on tckon window, the lef file will be generated in the folder as shown in the below screenshot:
+
 ![image alt](https://github.com/Shiva67555/soc-design-and-planning-nasscom-vsd/blob/main/Screenshot%20from%202025-12-14%2013-21-26.png?raw=true)
+
+the lef file is generated on vsd design folder
+
+Now the lef file has been created, now we need to move this file to picorv32a. Before that we need to movie this file to src folder so that all the designs will be available at on location.`
 
 ![image alt](https://github.com/Shiva67555/soc-design-and-planning-nasscom-vsd/blob/main/Screenshot%20from%202025-12-14%2013-35-16.png?raw=true)
 
+Here we need to modify the config.tcl of picorv32a directory and add commands as shown in image
+
+In order to integrate standard cell into the openlane input these command in the openlane flow
+
+      prep -design picorv32a -tag 02-07_07-56 -overwrite
+        set lefs [glob $::env(DESIGN_DIR)/src/*.lef]
+        add_lefs -src $lefs
+        run_synthesis
+
 ![image alt](https://github.com/Shiva67555/soc-design-and-planning-nasscom-vsd/blob/main/Screenshot%20from%202025-12-14%2013-39-37.png?raw=true)
+
+Synthesis was successful
+
+Post synthesis and floorplan placement is done.
+
+To view the layout, magic tool is invoked in results/placement directory
 
 ![image alt](https://github.com/Shiva67555/soc-design-and-planning-nasscom-vsd/blob/main/Screenshot%20from%202025-12-14%2013-40-12.png?raw=true)
 
 ![image alt](https://github.com/Shiva67555/soc-design-and-planning-nasscom-vsd/blob/main/Screenshot%20from%202025-12-14%2013-40-47.png?raw=true)
+
+Since Clock Tree Synthesis (CTS) is not yet completed, the timing analysis is performed using an ideal clock. At this stage, only setup time slack is evaluated. Setup slack is defined as the difference between the required arrival time and the actual data arrival time. For timing to be met, the worst-case slack must be zero or positive. If a negative slack is observed during pre-CTS analysis, the following corrective actions can be taken:
+
+Adjust the synthesis strategy, including buffering and cell sizing options.
+
+Check for cells that violate maximum fanout limits and replace or restructure high-fanout cells to reduce delay.
 
 ![image alt](https://github.com/Shiva67555/soc-design-and-planning-nasscom-vsd/blob/main/Screenshot%20from%202025-12-14%2013-59-30.png?raw=true)
 
@@ -377,6 +485,8 @@ This information guides both cell layout and routing feasibility.
 ![image alt](https://github.com/Shiva67555/soc-design-and-planning-nasscom-vsd/blob/main/Screenshot%20from%202025-12-14%2014-06-32.png?raw=true)
 
 ![image alt](https://github.com/Shiva67555/soc-design-and-planning-nasscom-vsd/blob/main/Screenshot%20from%202025-12-14%2014-07-16.png?raw=true)
+
+Sky130_vsdinv is added to the picorv32a design.
 
 ![image alt](https://github.com/Shiva67555/soc-design-and-planning-nasscom-vsd/blob/main/Screenshot%20from%202025-12-14%2014-08-14.png?raw=true)
 
