@@ -189,6 +189,7 @@ To invoke open lane, first the terminal should be opened in openlane working dir
  Step 2: Start OpenLANE in Interactive Mode
        
        ./flow.tcl -interactive
+
 Step 3: Load OpenLANE Package
 
      package require openlane 0.9
@@ -352,8 +353,24 @@ Extraction Process Once the layout was completed, parasitic extraction was perfo
 
 # Lab steps to git clone vsdstd cell design
 To clone the standard cell, copy the file path from github repository and paste it in the openlane directory after initiating the command git clone. The file path to clone the std cell is as follows
-                   
-                   git clone https://github.com/nickson-jose/vsdstdcelldesign
+
+    # Change directory to openlane
+    cd Desktop/Openlane
+
+    # Clone the repository with custom inverter design
+    git clone https://github.com/nickson-jose/vsdstdcelldesign
+
+    # Change into repository directory
+    cd vsdstdcelldesign
+
+    # Copy magic tech file to the repo directory for easy access
+     cp /home/user/Desktop/openlane/pdks/sky130A/libs.tech/magic/sky130A.tech .
+
+    # Check contents whether everything is present
+     ls
+
+    # Command to open custom inverter layout in magic
+    magic -T sky130A.tech sky130_inv.mag &
 
 This creates vsdstd cell design in openlane directory
 
@@ -374,6 +391,18 @@ To extract spice netlist, input command extract all to tckon window. It extracts
 ![image alt](https://github.com/Shiva67555/soc-design-and-planning-nasscom-vsd/blob/main/Screenshot%20from%202025-12-11%2010-54-22.png?raw=true)
 
 ![image alt](https://github.com/Shiva67555/soc-design-and-planning-nasscom-vsd/blob/main/Screenshot%20from%202025-12-11%2010-54-47.png?raw=true)
+
+          # Check current directory
+           pwd
+
+          # Extraction command to extract to .ext format
+           extract all
+
+          # Before converting ext to spice this command enable the parasitic extraction also
+           ext2spice cthresh 0 rthresh 0
+
+          # Converting to ext to spice
+           ext2spice
 
 ![image alt](https://github.com/Shiva67555/soc-design-and-planning-nasscom-vsd/blob/main/Screenshot%20from%202025-12-11%2011-07-35.png?raw=true)
 
@@ -591,6 +620,16 @@ The final day of the workshop focused on completing the physical design flow by 
 
 A Power Distribution Network ensures reliable delivery of power and ground to every standard cell and macro within the chip. A well-designed PDN minimizes voltage drop, improves signal integrity, and enhances overall chip stability.
 
+In comparison with ASIC flow, the power distribution in openlane is out of floorplan. PDN must be generated post CTS and timing analysis
+
+To generated PDN network give command mentioned below
+
+    gen_pdn
+
+To ensure that PDN network is generated successfully you can give variable
+
+    echo $::env(CURRENT_DEF)
+
 The PDN primarily distributes:
 
 1.VDD (power) 
@@ -622,9 +661,17 @@ This variable points to the merged LEF file without padding. It provides structu
 
 Improper configuration of these variables may cause PDN generation to fail.
 
-# Routing Stage 
+# Routing:
 
-# Preparing for Routing 
+Openlane uses two stages of routing. 
+
+1.Fast routing: Routing region is divide into rectangular grids
+
+2.Detailed routing: routing region is divide into finer grid to implement physical wiring using trionroute tool.
+
+To run routing input command
+
+    run_routing
 
 Before initiating routing, key routing-related variables were inspected to confirm the current design state.
 
