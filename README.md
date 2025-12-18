@@ -5,6 +5,74 @@ A two-week hands-on workshop on Digital VLSI SoC Design and Planning, covering t
 
 The RTL to GDSII flow represents the complete journey of a digital design, starting from a high-level behavioral description and ending with a manufacturable physical layout. This flow includes major stages such as RTL synthesis, floorplanning, placement, clock tree synthesis, routing, and multiple verification steps. The primary goal is to ensure that the final layout faithfully implements the intended logic, meets timing constraints, and complies with foundry design rules.
 
+# How to talk to computers
+
+![image alt]()
+
+Talking to a computer means giving some set of instructions in a form that hardware understands and whose hardware is based on RISC-V core. If you want to run a software/ Programming code like C,C++ or java it can be easily understandable by humans, but the hardware cannot understand it. So the compiler converts high level code to RISC-V instructions which processor can decode.
+
+# SoC Design and Openlane
+
+A System-on-Chip (SoC) integrates multiple components of a computer or electronic system into a single silicon die. A typical SoC contains, Processor, Memory Subsystem, Pheripherals, Bus architecture. To design the ASIC, it requires ASIC flow. The objective of this ASIC flow is to convert RTL to GDSII for the final layout. The whole ASIC flow is automated using EDA tools which is a software automatically does place & Route.
+
+# RTL to GDSII flow
+
+![image alt]()
+
+1. Synthesis: The code written by the RTL designers cannot be directly Physically implemented on the chip, so synthesis is a process where the RTL code is converted into gate-level netlist using standard cell libraries which can be easily understandable by EDA tools
+
+2. Floor Planning: It’s the process of creating the area of chip using aspect ratio and utilization factor, placement of macro cells, creating power grids and adding decap cells/ physical cells
+
+3. Placement: Placement is process where the standard cells are placed in optimal positions basically in assigned floor plan and ensures to reduce congestion. Placement is done in two stages
+
+a.Global Placement: Cells are placed at optimal positions, there might be overlapps
+
+b.Detailed Placement: Cells are placed at legal positions with no overlaps
+
+4. Routing: Routing is making connections between the standard cells. It done in two phases one is
+
+a.Global Routing
+
+b.Detailed Routing
+
+5. Sign off: Sign off is the last stage of Physical design flow where it verifies layout satisfies the rules for manufacturing process like DRC, LVS and Timing verifications.
+
+# OpenLane ASIC flow
+
+The openLane ASIC flow is as follows:
+
+![image alt]()
+
+# Get familiar to Open-source EDA
+
+Before mastering opensource EDA tools, the first and foremost thing is to get familiar with basic linux commands to communicate with the open source software on Linux environment. Some of the basic commands are mentioned below
+
+    cd file name: takes to the directory “filename:
+
+    ls -ltr: list the files/ directories
+
+    cd ../: exits from the directory
+
+    pwd: prints the current directory
+
+    cp: copy files to the active directory
+
+    Command --help: shows the use of the command
+
+     clear: clears the screen
+
+In our design flow, we use the Sky130_fd_sc_hd PDK variant. This naming convention describes important details about the process and the type of standard-cell library included.
+
+1.sky130 → Refers to the SkyWater 130 nm technology node.
+
+2.fd → Indicates the foundry designation, meaning this PDK is released by SkyWater Foundry.
+
+3.sc → Stands for standard cell library, which provides the logic cells required for digital design.
+
+4.hd → Represents the high-density variant of the standard-cell library. This library prioritizes smaller cell area, enabling higher logic density at the cost of drive strength.
+
+The Sky130_fd_sc_hd PDK contains a wide range of technology files used at different stages of the digital ASIC flow. Some important file types are Verilog files, lef lifes, tech files, lib files. The Sky130_fd_sc_hd library provides all the necessary functional, timing, and physical data required for RTL-to-GDSII implementation.
+
 # Design Abstraction in VLSI and the Y-Chart Model:-
 
 A key theoretical concept introduced was design abstraction in VLSI systems. The Y-Chart model explains how a design evolves across three domains: a.Behavioral domain – functional description of the system b.Structural domain – organization of components and interconnections c.Geometric domain – physical representation of the design
@@ -110,6 +178,18 @@ Hands-on exercises performed during the lab session included:
 
 # COMMANDS USED Terminal screenshot
 
+Design preparation steps to invoke openlane
+
+To invoke open lane, first the terminal should be opened in openlane working directory. Once the path is created the openlane can be invoked by the following commands
+
+    Docker
+
+    ./flow.tcl -interactive (it’s a script that specifies the details to interact with the openlane flow)
+
+     Package require openlane 0.9
+
+     prep -design picorv32a
+     
 ![image alt](https://github.com/Gobika404/NASSCOM-VSD-SoC--design-and--Planning-Program/blob/main/Screenshot%20from%202025-12-12%2011-25-56.png?raw=true)
 
 ![image alt](https://github.com/Shiva67555/soc-design-and-planning-nasscom-vsd/blob/main/Screenshot%20from%202025-12-15%2012-55-47.png?raw=true)
