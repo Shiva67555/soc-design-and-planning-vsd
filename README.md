@@ -675,10 +675,18 @@ To run routing input command
 
 Before initiating routing, key routing-related variables were inspected to confirm the current design state.
 
-![image alt](https://github.com/Gobika404/NASSCOM-VSD-SoC--design-and--Planning-Program/raw/main/Screenshot%20from%202025-12-14%2022-34-31.png)
+![image alt](https://raw.githubusercontent.com/Shiva67555/soc-design-and-planning-nasscom-vsd/190c67a70723a5300873c9ff999593ebbbf3cb62/Screenshot%202025-12-18%20165006.png)
 
-![image alt]()
+Commands to load routed def in terminal
 
-![image alt]()
+    cd Desktop/work/tools/openlane_working_dir/openlane/designs/picorv32a/runs/26-03_08-45/results/routing/
 
-THANK YOU
+    magic -T /home/vsduser/Desktop/work/tools/openlane_working_dir/pdks/sky130A/libs.tech/magic/sky130A.tech lef read ../../tmp/merged.lef def read picorv32a.def &
+
+
+![image alt](https://github.com/Shiva67555/soc-design-and-planning-nasscom-vsd/blob/main/Screenshot%202025-12-18%20165055.png?raw=true)
+
+![image alt](https://github.com/Shiva67555/soc-design-and-planning-nasscom-vsd/blob/main/Screenshot%202025-12-18%20170000.png?raw=true)
+
+# THANK YOU
+
